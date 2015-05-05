@@ -24,7 +24,7 @@ class Car
 	end
 end
 class Racing_car < Car #Crea la clase Racing_car, hereda de Car	
-		def initialize
+		def initialize 
 			@noise = 'BROOOOOOOOM!'
 		end
 end
