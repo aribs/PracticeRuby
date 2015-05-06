@@ -32,9 +32,19 @@ end
 
 my_car = Car.new 'broom'
 my_car2 = Car.new 'BROOOM'
+my_car3 = Car.new 'Broom-Broom-Broomm-Broom'
 my_car.make_noise
 my_car2.make_noise
 Car.view_count
 porsche = Racing_car.new
 porsche.make_noise
+puts "Noise of all cars:"
+cars_array = [my_car, my_car2, my_car3]
+cars_array.push porsche
+cars_array.each {|car| car.make_noise}
+#Ejercicio que coge de un Array y crea 3 nuevos objetos a partir de los sonidos incluidos en el array
+sounds = ["Broom", "Meek", "Tac tac tac"]
+newCars = sounds.map { |sound| new_car = Car.new  sound}
+puts "print noise new cars"
+newCars.each {|car| car.make_noise}
 
