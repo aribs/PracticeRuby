@@ -1,6 +1,6 @@
 class Car 
 	@@brand = 'seat'
-
+	attr_accessor :noise
 	def initialize noise
 		@noise = noise
 		add_count
@@ -21,6 +21,9 @@ class Car
 		count_cars = return_count.to_i
 		count_cars += 1
 		IO.write("cars.txt",count_cars)
+	end
+	def ret_noise
+		return @noise
 	end
 end
 class Racing_car < Car #Crea la clase Racing_car, hereda de Car	
@@ -47,4 +50,8 @@ sounds = ["Broom", "Meek", "Tac tac tac"]
 newCars = sounds.map { |sound| new_car = Car.new  sound}
 puts "print noise new cars"
 newCars.each {|car| car.make_noise}
+soundsCars = newCars.reduce("") do |allSounds, x| 
+	allSounds + x.noise
+end
+puts soundsCars
 

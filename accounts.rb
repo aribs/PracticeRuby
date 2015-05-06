@@ -52,16 +52,15 @@ class Account
 		puts "You have a #{@@count_psw_bad} insegure paswords"
 	end
 	def save_account
-		IO.write("accounts.txt", @user)
-		IO.write("accounts.txt", @encrypted)
-		IO.write("accounts.txt", @website)
-	end
+		text_saved = IO.read("accounts.txt") + "\n " + @user + "\n " + @encrypted +"\n " +  @website + "\n " 
+		IO.write("accounts.txt", text_saved) 
+	end 
 
 
 end
 myFacebook = Account.new "alejo", "contrasena", "facebook.com"
 google = Account.new "userAlejo", "mypasword", "google.com"
-twitter = Account.new "arrsss", "abc", "twitter.com"
+twitter = Account.new "twtAlejo", "abc", "twitter.com"
 
 puts myFacebook.view_account
 puts google.view_account
