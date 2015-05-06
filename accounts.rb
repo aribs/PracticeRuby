@@ -1,16 +1,19 @@
 class Account
 	attr_accessor 
+	@@count_psw_bad = 0
 	def initialize user, pasword, website
 		@user = user
 		@pasword = pasword
 		@website = website 
 		encrypt_pasword
+		save_account
 
 	end
 	def view_account
 		if @pasword.length >= 5
 			puts "User: #{@user}, pasword: #{@encrypted}, website: #{@website} "
 		else
+			@@count_psw_bad += 1
 			 puts "User: #{@user}, pasword: #{@encrypted}, website: #{@website} Caution, your pasword is too short!"
 		end
 	end
@@ -45,16 +48,25 @@ class Account
 	def update_name name 
 		@user = name
 	end
+	def self.view_insegure
+		puts "You have a #{@@count_psw_bad} insegure paswords"
+	end
+	def save_account
+		IO.write("accounts.txt", @user)
+		IO.write("accounts.txt", @encrypted)
+		IO.write("accounts.txt", @website)
+	end
 
 
 end
 myFacebook = Account.new "alejo", "contrasena", "facebook.com"
 google = Account.new "userAlejo", "mypasword", "google.com"
+twitter = Account.new "arrsss", "abc", "twitter.com"
 
 puts myFacebook.view_account
 puts google.view_account
 puts google.decrypt_pasword
-google.update_pasword "pistachos"
-google.update_name "bicicleta"
 puts google.view_account
+puts twitter.view_account
 puts google.decrypt_pasword
+Account.view_insegure
