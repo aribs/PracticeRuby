@@ -55,6 +55,10 @@ class Account
 		text_saved = IO.read("accounts.txt") + "\n " + @user + "\n " + @encrypted +"\n " +  @website + "\n " 
 		IO.write("accounts.txt", text_saved) 
 	end 
+	def self.account_manager
+		text_saved = IO.read("accounts.txt")
+		puts "All paswords saved \n #{text_saved}"
+	end
 
 
 end
@@ -69,3 +73,4 @@ puts google.view_account
 puts twitter.view_account
 puts google.decrypt_pasword
 Account.view_insegure
+Account.account_manager
