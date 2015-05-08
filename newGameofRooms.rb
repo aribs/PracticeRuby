@@ -20,12 +20,9 @@ class Game
 		while play
 			show_room @player.position
 			move
-			
 		end
 	end
-	
 	def move
-	
 		room = get_room @player.position
 		direction = answerDirection
 		possible_directions = room.rute.keys
